@@ -2,7 +2,6 @@ class UserSerializer
   include FastJsonapi::ObjectSerializer
 
   has_many :attendances, serializer: AttendanceSerializer
-  attributes :id
-  attributes :name
+  attributes :id, :name
   
 end
