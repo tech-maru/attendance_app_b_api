@@ -1,0 +1,91 @@
+/* 共通 */
+
+.btn {
+  a {
+     text-decoration: none;
+     color: white;
+  }
+}
+
+
+/* new */
+
+.account-table {
+  text-align: left;
+}
+
+.label-form {
+  margin-top: 10px;
+}
+
+.btn-signup {
+  margin: 15px auto;
+}
+
+/* index */
+
+.pagination {
+  margin-top: 0!important;
+}
+
+.search-container {
+  float: right;
+  .form-search {
+    height: 33px;
+    padding-right: 0;
+  }
+}
+
+.table-users {
+  td {
+    vertical-align: middle!important;
+    a{
+      text-decoration: none;
+    }
+  }  
+}
+
+
+/* show */
+
+.user-table {
+  margin-top: 40px;
+  tr {
+    td{
+      text-align: center;
+      vertical-align: middle!important;
+      a {
+        text-decoration: none;
+       }
+    }
+  }
+}
+
+span {
+  margin: auto 20px;
+}
+
+.attendances-table {
+  margin-top: 10px;
+  tr {
+    th, td{
+      text-align: center;
+      a {
+        margin-top: 0;
+      }
+    }
+  }
+}
+
+.btn-select {
+  float: right;
+  a {
+  color: #333;
+  }
+}
+
+.total-table {
+  background-color: #d0d0d0!important;
+  text-align: center;
+}
+
