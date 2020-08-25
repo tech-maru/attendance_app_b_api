@@ -1,8 +1,9 @@
 class Api::V1::PostsController < ApplicationController
   
   def login_date
-    user = User.find_by(email: params[:post][:email].downcase)
-    if user && user.authenticate(params[:post][:password])
+    result = JSON.parse(params)
+    user = User.find_by(email: result[:post][:email].downcase)
+    if user && user.authenticate(result[:post][:password])
       serializer = UserSerializer.new(user)
       render json: serializer.serialized_json
     else
