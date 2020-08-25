@@ -1,9 +1,9 @@
 class Api::V1::PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token
   
   def login_date
-    result = JSON.parse(params)
-    user = User.find_by(email: result[:post][:email].downcase)
-    if user && user.authenticate(result[:post][:password])
+    user = User.find_by(email: params[:post][:email].downcase)
+    if user && user.authenticate(params[:post][:password])
       serializer = UserSerializer.new(user)
       render json: serializer.serialized_json
     else
