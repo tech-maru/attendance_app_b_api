@@ -15,8 +15,12 @@ class Api::V1::PostsController < ApplicationController
     user = User.find(params[:id])
     object_month
     if @attendances = user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
-      serializer = AttendanceSerializer.new(attendance)
-      render json: serializer.serialized_json
+      attendance_arrey = []
+      @attendances.each do |attendance|
+        serializer = AttendanceSerializer.new(attendance)
+        attendance_arrey.push(serializer)
+      end
+      render json: attendance_arrey.serialized_json
     else
       render json:{ status: 'failure', message: 'ERROR' }
     end
