@@ -15,7 +15,7 @@ class Api::V1::PostsController < ApplicationController
     user = User.find(params[:id])
     object_month
     if @attendances = user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
-      render json: { attendances: @attendance }
+      render json: { attendances: @attendances }
     else
       render json:{ status: 'failure', message: 'ERROR' }
     end
