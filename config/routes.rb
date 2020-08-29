@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :posts do
         post :login_date, on: :collection
+        post :pick_attendance, on: :collection
       end
     end
   end
