@@ -25,7 +25,7 @@ class Api::V1::PostsController < ApplicationController
         }
         render json: { attendances: @sendAttendance }
       else
-        render json: { attendances: "null" }
+        render json: { date: "null" }
       end
     else
       render json:{ status: 'failure', message: 'ERROR' }
