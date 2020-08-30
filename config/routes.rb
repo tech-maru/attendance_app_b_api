@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       get 'attendances/edit_one_month'
       get 'attendances/edit_one_week'
       patch 'attendances/all_update'
+      get 'test_api'
     end
     resources :attendances, only: :update
   end

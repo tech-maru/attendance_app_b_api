@@ -14,8 +14,15 @@ class Api::V1::PostsController < ApplicationController
   def pick_attendance
     user = User.find(params[:id])
     object_month
-    if @attendances = user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
-      render json: { attendances: @attendances }
+    if attendances = user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
+      @sendAttendance = attendances.map { |attendance| [
+      attendance.id, 
+      attendance.worked_on,
+      attendance.started_at.present?? attendance.started_at.strftime("%H:%M") : nil,
+      attendance.finished_at.present?? attendance.finished_at.strftime("%H:%M") : nil
+      ]
+    }
+      render json: { attendances: @sendAttendance }
     else
       render json:{ status: 'failure', message: 'ERROR' }
     end
