@@ -25,7 +25,7 @@ class Api::V1::PostsController < ApplicationController
   
   def object_month
     @first_day = params[:date].nil? ?
-    Date.current.beginning_of_month : params[:date].to_date
+    Date.current.beginning_of_month : params[:date].to_date.beginning_of_month
     @last_day = @first_day.end_of_month
     @one_week = [*@first_day..@last_day]
   end
