@@ -27,10 +27,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     attendances = @user.attendances
     @api = attendances.map { |attendance| [
-      attendance.id, 
-      attendance.worked_on,
-      attendance.started_at.present?? attendance.started_at.strftime("%H:%M") : nil,
-      attendance.finished_at.present?? attendance.finished_at.strftime("%H:%M") : nil
+      "id": attendance.id, 
+      "worked_on": attendance.worked_on,
+      "started_at": attendance.started_at.present?? attendance.started_at.strftime("%H:%M") : nil,
+      "finished_at": attendance.finished_at.present?? attendance.finished_at.strftime("%H:%M") : nil
       ]
     }
   end
