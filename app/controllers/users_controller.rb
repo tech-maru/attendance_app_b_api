@@ -34,8 +34,8 @@ class UsersController < ApplicationController
       ]
     }
     
-    if attendance = @user.attendances.find_by(worked_on: Date.current.prev_day)
-      @attendance = attendance
+    if @attendance = @user.attendances.find_by(worked_on: Date.current)
+      @test_moji = "ok" 
     else
       @attendance = "なし"
     end
