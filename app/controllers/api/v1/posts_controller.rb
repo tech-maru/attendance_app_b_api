@@ -37,7 +37,7 @@ class Api::V1::PostsController < ApplicationController
     if user.attendances.create(
       worked_on: params[:worked_on],
       started_at: params[:started_at],
-      foinished_at: params[:finished_at]
+      finished_at: params[:finished_at]
       )
       render json: { status: 'success' }
     else
