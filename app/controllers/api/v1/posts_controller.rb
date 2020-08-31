@@ -23,9 +23,7 @@ class Api::V1::PostsController < ApplicationController
           "finished_at": attendance.finished_at.present?? attendance.finished_at.strftime("%H:%M") : nil
           ]
         }
-        serializer = AttendancesSerializer.new(sendAttendance)
-        render json: serializer.serialized_json
-        # render json: { status: "success", attendances: @sendAttendance }
+        render json: { status: "success", attendances: @sendAttendance }
       else
         render json: { date: "null" }
       end
