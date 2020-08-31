@@ -16,7 +16,7 @@ class Api::V1::PostsController < ApplicationController
     object_month
     if attendances = user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
       if attendances.present?
-        sendAttendance = attendances.map { |attendance| [
+        @sendAttendance = attendances.map { |attendance| [
           "id": attendance.id, 
           "worked_on": attendance.worked_on,
           "started_at": attendance.started_at.present?? attendance.started_at.strftime("%H:%M") : nil,
