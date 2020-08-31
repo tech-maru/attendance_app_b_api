@@ -16,14 +16,16 @@ class Api::V1::PostsController < ApplicationController
     object_month
     if attendances = user.attendances.where(worked_on: @first_day..@last_day).order(:worked_on)
       if attendances.present?
-        @sendAttendance = attendances.map { |attendance| [
+        sendAttendance = attendances.map { |attendance| [
           "id": attendance.id, 
           "worked_on": attendance.worked_on,
           "started_at": attendance.started_at.present?? attendance.started_at.strftime("%H:%M") : nil,
           "finished_at": attendance.finished_at.present?? attendance.finished_at.strftime("%H:%M") : nil
           ]
         }
-        render json: { status: "success", attendances: @sendAttendance }
+        serializer = UserSerializer.new(sendAttendance)
+        render json: serializer.serialized_json
+        # render json: { status: "success", attendances: @sendAttendance }
       else
         render json: { date: "null" }
       end
