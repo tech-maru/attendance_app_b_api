@@ -47,8 +47,8 @@ class Api::V1::PostsController < ApplicationController
   
   def search_attendance
     user = User.find(params[:id])
-    if attendance = user.attendances.find_by(worked_on: Date.current)
-      render json: { status: 'success', attendance: attendance }
+    if @attendance = user.attendances.find_by(worked_on: Date.current)
+      render json: { status: 'success', attendance: @attendance }
     else
       render json:{ status: 'failure', message: 'ERROR' }
     end  
