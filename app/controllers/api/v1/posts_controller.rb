@@ -32,6 +32,19 @@ class Api::V1::PostsController < ApplicationController
     end
   end
   
+  def create
+    user = User.find(params[:id])
+    if user.attendances.create(
+      worked_on: params[:worked_on],
+      started_at: params[:started_at],
+      foinished_at: params[:finished_at]
+      )
+      render json: { status: 'success' }
+    else
+      render json:{ status: 'failure', message: 'ERROR' }
+    end
+  end
+  
   private
   
   def object_month

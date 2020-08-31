@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   
   namespace 'api' do
     namespace 'v1' do
-      resources :posts do
+      resources :posts, only: :create do
         post :login_date, on: :collection
         post :pick_attendance, on: :collection
       end
