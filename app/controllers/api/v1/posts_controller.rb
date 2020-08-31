@@ -23,7 +23,7 @@ class Api::V1::PostsController < ApplicationController
           "finished_at": attendance.finished_at.present?? attendance.finished_at.strftime("%H:%M") : nil
           ]
         }
-        render json: { attendances: @sendAttendance }
+        render json: { status: "success", attendances: @sendAttendance }
       else
         render json: { date: "null" }
       end
@@ -44,6 +44,16 @@ class Api::V1::PostsController < ApplicationController
       render json:{ status: 'failure', message: 'ERROR' }
     end
   end
+  
+  def search_attendance
+    user = User.find(params[:id])
+    if attendance = user.attendances.find_by(worked_on: Date.current)
+      render json: { status: 'success', attendance: attendance }
+    else
+      render json:{ status: 'failure', message: 'ERROR' }
+    end  
+  end
+    
   
   private
   

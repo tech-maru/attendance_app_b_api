@@ -33,6 +33,12 @@ class UsersController < ApplicationController
       "finished_at": attendance.finished_at.present?? attendance.finished_at.strftime("%H:%M") : nil
       ]
     }
+    
+    if attendance = @user.attendances.find_by(worked_on: Date.current.prev_day)
+      @attendance = attendance
+    else
+      @attendance = "なし"
+    end
   end
   
   def show_one_week
