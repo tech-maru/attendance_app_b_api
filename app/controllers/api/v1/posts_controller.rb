@@ -53,8 +53,17 @@ class Api::V1::PostsController < ApplicationController
       render json:{ status: 'failure', message: 'ERROR' }
     end  
   end
-    
   
+  def finished_at
+    user = User.find(params[:id])
+    attendance = user.attendances.find(params[:attendance_id])
+    if attendance.update(finished_at: params[:finished_at])
+      render json: { status: 'success' }
+    else
+      render json:{ status: 'failure', message: 'ERROR' }
+    end
+  end
+    
   private
   
   def object_month
