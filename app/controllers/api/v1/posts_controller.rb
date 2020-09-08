@@ -7,7 +7,7 @@ class Api::V1::PostsController < ApplicationController
       serializer = UserSerializer.new(user)
       render json: serializer.serialized_json
     else
-      render json:{ status: 'failure', message: user.errors }
+      render json:{ status: 'failure', message: "認証に失敗しました。" }
     end
   end
   
