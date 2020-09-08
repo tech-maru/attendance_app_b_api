@@ -55,7 +55,8 @@ class Api::V1::PostsController < ApplicationController
   end
   
   def user_create
-    if user = User.create!(user_params)
+    user = User.new(user_params)
+    if user.save!
       serializer = UserSerializer.new(user)
       render json: serializer.serialized_json
     else
