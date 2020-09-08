@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     namespace 'v1' do
       resources :posts, only: [:create] do
         post :login_date, on: :collection
-        post :pick_attendance, on: :collection
+        get :pick_attendance, on: :collection
         post :search_attendance, on: :collection
         patch :finished_at, on: :collection
       end
