@@ -35,6 +35,7 @@ Rails.application.routes.draw do
         get :pick_attendance, on: :collection
         post :search_attendance, on: :collection
         patch :finished_at, on: :collection
+        post :user_create, on: :collection
       end
     end
   end

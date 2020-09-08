@@ -54,6 +54,16 @@ class Api::V1::PostsController < ApplicationController
     end  
   end
   
+  def user_create
+    if @user = User.new(user_params)
+      serializer = UserSerializer.new(user)
+      render json: serializer.serialized_json
+    else
+      render json:{ status: 'failure', message: user.errors }
+    end
+  end
+
+  
   def finished_at
     user = User.find(params[:id])
     attendance = user.attendances.find(params[:attendance_id])
@@ -71,6 +81,10 @@ class Api::V1::PostsController < ApplicationController
     Date.current.beginning_of_month : params[:date].to_date.beginning_of_month
     @last_day = @first_day.end_of_month
     @one_week = [*@first_day..@last_day]
+  end
+  
+  def user_params
+    params.permit(:name, :email, :password, :password_confirmation)
   end
   
 end
